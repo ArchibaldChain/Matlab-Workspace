@@ -10,7 +10,8 @@ m = length(y); % number of training examples
 
 % You need to return the following variables correctly 
 J = 0;
-X = [ ones(size(X,1), X];
+
+
 grad = zeros(size(theta));
 
 % ====================== YOUR CODE HERE ======================
@@ -21,15 +22,19 @@ grad = zeros(size(theta));
 %
 
 
+a = ( X * theta - y).^2;
+J = 1/(2*m) * sum(a) + lambda/(2*m) * sum(theta.^2);
 
-J = 1/m * sum( ( X * theta - y).^2);
+grad(1) = 1/m * ((X*theta - y)' * X(:,1)) ;
+
+for i = 2 : size(theta)
+    grad(i) = 1/m * ((X*theta - y)'* X(:,i)) + lambda * theta(i) / m;
+    
+end
 
 
 
-
-
-
-
+                                                                           
 
 % =========================================================================
 

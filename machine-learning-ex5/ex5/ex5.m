@@ -82,6 +82,7 @@ pause;
 %
 
 %  Train linear regression with lambda = 0
+fprintf("Part4\n");
 lambda = 0;
 [theta] = trainLinearReg([ones(m, 1) X], y, lambda);
 
@@ -103,7 +104,7 @@ pause;
 %  Write Up Note: Since the model is underfitting the data, we expect to
 %                 see a graph with "high bias" -- Figure 3 in ex5.pdf 
 %
-
+fprintf("Part5\n");
 lambda = 0;
 [error_train, error_val] = ...
     learningCurve([ones(m, 1) X], y, ...
