@@ -47,7 +47,7 @@ function [error_train, error_val] = ...
     %           % X(1:i, :) and y(1:i), storing the result in
     %           % error_train(i) and error_val(i)
     %           ....
-        %
+    %
     %       end
     %
 
@@ -55,13 +55,16 @@ function [error_train, error_val] = ...
     fprintf("sign\n");
 
     for i = 1:m
-        theta = trainLinearReg(X(1:i, :), y(1:i, :), lambda);
+        theta = trainLinearReg(X(1:i, :), y(1:i,:), lambda);
 
         if i <= size(error_train, 1)
-            a = linearRegCostFunction(X(1:i, :), y(1:i, :), theta, lambda);
+            % this is wrong:
+            % a = linearRegCostFunction(X(1:i, :), y(1:i,:), theta, 0);
+            % becauces when you calculate the error, you don not need a lambda
+            a = linearRegCostFunction(X(1:i, :), y(1:i,:), theta, 0);
             error_train(i) = a;
 
-            a = linearRegCostFunction(Xval, yval, theta, lambda);
+            a = linearRegCostFunction(Xval, yval, theta, 0);
             error_val(i) = a;
         end
 
