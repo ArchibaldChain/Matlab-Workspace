@@ -9,6 +9,10 @@ title ('Security Camera');
 
 %% Acquire reference image
 ref_vid_img = snapshot(hCamera);
+%%
+% 
+%  Here we made a test
+% 
 
 %% Quantize images and Outputing to the screen
 frames = 2000;
@@ -21,4 +25,4 @@ for i = 1: frames
     
 end
 
-
+clear hShow;

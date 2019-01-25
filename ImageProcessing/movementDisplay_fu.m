@@ -26,7 +26,7 @@ imageStats = regionprops(imgFilled, 'MajorAxisLength');
 imgLengths = [imageStats.MajorAxisLength];
 idx = imgLengths > 100;
 imageStatsFinal = imageStats(idx);
-disp(imageStatsFinal)
+% disp(imageStatsFinal)
 
 %% Determine if Change is Significant
 

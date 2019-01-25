@@ -1,16 +1,32 @@
-% Create a cascade detector object.
+%% Create a cascade detector object.
 faceDetector = vision.CascadeObjectDetector();
 
-% Read a video frame and run the detector.
-videoFileReader = vision.VideoFileReader('test2.avi');
-videoFrame      = step(videoFileReader);
-bbox            = step(faceDetector, videoFrame);
+%% Read a video frame and run the detector.
+% videoFileReader = vision.VideoFileReader('test2.avi');
+% videoFrame      = step(videoFileReader);
+% bbox            = step(faceDetector, videoFrame);
 
-% Draw the returned bounding box around the detected face.
-videoOut = insertObjectAnnotation(videoFrame,'rectangle',bbox,'Face');
-figure, imshow(videoOut), title('Detected face');
+%% Draw the returned bounding box around the detected face.
+% videoOut = insertObjectAnnotation(videoFrame,'rectangle',bbox,'Face');
+% figure, imshow(videoOut), title('Detected face');
 
-% Get the skin tone information by extracting the Hue from the video frame
+%% Live Face Detection
+hCamera = webcam;
+
+hShow = imshow(zeros(480, 640, 3, 'uint8')); 
+frames = 500;
+for i = 1: frames
+    vid_img = snapshot(hCamera);
+    bbox = step(faceDetector, vid_img);
+    videoOut = insertObjectAnnotation(vid_img,'rectangle',bbox,'Face');
+%     imshow(videoOut), title('Detected face');
+    
+    set(hShow, 'CData', videoOut);
+    drawnow;
+end
+clear hCamera
+
+%% Get the skin tone information by extracting the Hue from the video frame
 % converted to the HSV color space.
 [hueChannel,~,~] = rgb2hsv(videoFrame);
 

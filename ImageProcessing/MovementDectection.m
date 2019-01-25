@@ -8,6 +8,8 @@ imgGrey1 = rgb2gray(img1);
 imgGrey2 = rgb2gray(img2);
 
 %% Substract img
+% We here make a difference of two image
+% $$ img = img1 - img2 $$
 imgDiff = abs(imgGrey1 - imgGrey2);
 
 
