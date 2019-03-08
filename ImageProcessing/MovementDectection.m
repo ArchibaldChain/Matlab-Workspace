@@ -1,7 +1,7 @@
 %% Load Image
 
-img1 = imread('Image1.jpg');
-img2 = imread('Image2.jpg');
+img1 = imread('img1.jpg');
+img2 = imread('img2.jpg');
 
 %% Convert img to Grey
 imgGrey1 = rgb2gray(img1);
@@ -18,12 +18,13 @@ imgDiff = abs(imgGrey1 - imgGrey2);
 % [mRow, mCol] = find(imgDiff == maxDiff);
 % [m,n] = size(imgDiff);
 
-% imshow(imgDiff);
+imshow(imgDiff);
 % hold on;
 % plot(mRow, mCol, 'r*');
 
 %% Enlarge contrast
-newImg = increaseContrast(5,5,imgDiff);
+newImg = increaseContrast(5,60,imgDiff);
+figure
 imshow(newImg);
 % hold on;
 % plot(mRow, mCol, 'r*');

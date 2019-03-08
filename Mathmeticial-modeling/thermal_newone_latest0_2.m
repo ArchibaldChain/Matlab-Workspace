@@ -74,11 +74,11 @@ for i = 1:length(t)
 
     %subplot(2,2,1);
     
-%     if mod(i,100000)==0 	
-%         figure(1);
-%         plot(x,T(1:n+10));
-%         pause(0.0001);
-%     end 
+    if mod(i,100000)==0 	
+        figure(1);
+        plot(x,T(1:n+10));
+        pause(0.0001);
+    end 
     
     
     if (t(i) == fix(t(i)))
@@ -101,8 +101,8 @@ for i = 1:length(t)
    
     
 end
-save('F:/Matlab/Q2/rac_05/answer.mat', 'tempMatrix');
-disp('end');
+% save('F:/Matlab/Q2/rac_05/answer.mat', 'tempMatrix');
+ disp('end');
 
 end
 
