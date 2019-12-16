@@ -38,14 +38,6 @@ function poly =  LangPoly(x, x_k)
     poly = zeros(1, m);
     y_k = f(x_k);
     for i = 1:n
-%         pi = ones(1,m);
-%         for j = 1:n
-%             if j ~= i
-%             pi = pi.*(x - x_k(j)) /  ...
-%                    (x_k(i) - x_k(j) );
-%             end 
-%         end 
-        
         poly = poly + L_k(x, x_k, x_k(i)) * y_k(i) ;
     end
 end
@@ -79,11 +71,8 @@ function value = CubicSpline(x, x_k)
     alpha(n) = 3*FPN - 3*(a(n) - a(n-1))/h(n-1);
     
     % step 3
-%     alpha(2:n-1) = 3./h(2:n-1) .* ( a(3:n) - a(2:n-1) ) - ...
-%         3 ./h(1:n-2) .* (a(2:n-1) - a(1:n-2));
-    for i = 2:n-1
-        alpha(i) = 3/h(i)*(a(i+1) - a(i) ) - 3/ h(i-1) * (a(i) - a(i-1) );
-    end 
+    alpha(2:n-1) = 3./h(2:n-1) .* ( a(3:n) - a(2:n-1) ) - ...
+        3 ./h(1:n-2) .* (a(2:n-1) - a(1:n-2));
     % which is the vector form.
     
     % step 4

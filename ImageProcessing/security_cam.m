@@ -18,8 +18,8 @@ ref_vid_img = snapshot(hCamera);
 frames = 2000;
 for i = 1: frames
     vid_img = snapshot(hCamera);
-%     object_detected = movementDetection_fn(ref_vid_img, vid_img);
-    object_detected = movementDisplay_fu(ref_vid_img, vid_img);
+    object_detected = movementDetection_fn(ref_vid_img, vid_img);
+ %   object_detected = movementDisplay_fu(ref_vid_img, vid_img);
     set(hShow, 'CData', object_detected);
     drawnow;
     
