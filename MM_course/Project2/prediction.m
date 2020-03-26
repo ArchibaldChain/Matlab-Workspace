@@ -19,9 +19,10 @@ E0 = data_0(1);
 D0 = data_0(2); 
 I0 = data_0(3); 
 R0 = data_0(4); 
+Death0 = data_0(5);
 S0 = (N0 - E0 - D0 - I0 - R0) * (1 - ratio);
 Q0 = (N0 - E0 - D0 - I0 - R0) * ratio;
-Death0 = data_0(5);
+
 
 S = zeros(days,1);
 E = zeros(days,1);  

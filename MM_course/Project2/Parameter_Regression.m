@@ -1,4 +1,4 @@
-function parameter = Parameter_Regression(E, I, D, Death, R, N_0)
+function [parameter, A, y] = Parameter_Regression(E, I, D, Death, R, N_0)
 
 N = N_0 - Death;
 S = (N - E - I - D - R)* 0.05; % The amount of suscetible
@@ -20,19 +20,20 @@ for i = 1:n
     A_1(i,3) = -I(i)*S(i)/(N(i)-Q(i)); 
     A_1(i,4) = E(i) ;
 
-    A_2(i,2) = I(i)*S(i)/(N(i)-Q(i));
-    A_2(i,3) = E(i)*S(i)/(N(i)-Q(i)); 
+    A_2(i,2) = E(i)*S(i)/(N(i)-Q(i)); 
+    A_2(i,3) = I(i)*S(i)/(N(i)-Q(i));
     A_2(i,4) = -E(i);
     A_2(i,5) = -E(i);
-    A_2(i,6) = -E(i);  
-    A_2(i,7) = -E(i);  
+    A_2(i,6) = -E(i);
+
     
     A_3(i, 5) = E(i);
-    A_3(i, 6) = I(i);
-    A_3(i, 7) = I(i);
+    A_3(i, 6) = -I(i);
+    A_3(i, 7) = -I(i);
 
     A_4(i, 6) = E(i);
     A_4(i, 7) = I(i);
+    A_4(i, 9) = -D(i);
     A_4(i, 10) = -D(i);
 
     A_5(i, 8) = I(i);
@@ -56,5 +57,6 @@ for i = 1:n
 end
 
 %% Regression
+% parameter = regress(y(n+1: end), A(n+1:end, :));
 parameter = regress(y, A);
 end 
