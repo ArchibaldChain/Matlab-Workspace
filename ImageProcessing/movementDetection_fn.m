@@ -89,3 +89,5 @@ function [maxpeak, secMaxPeak] = findPeak(x)
 end
 
 end
+
+imwrite(

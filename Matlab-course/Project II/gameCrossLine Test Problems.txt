@@ -1,0 +1,31 @@
+tic
+Game = gameCrossLine({[1],[1 1 1],[1 1]},+1);
+Game.generatePossibleNextStepAndCompWinStatus
+Game
+toc
+winPos = Game.winPosOne; % should be 0
+winNeg = Game.winNegOne; % should be 1
+
+tic
+Game = gameCrossLine({[1],[1],[1],[1],[1],[1],[1]},1);
+Game.generatePossibleNextStepAndCompWinStatus
+Game
+toc
+winPos = Game.winPosOne; % should be 0
+winNeg = Game.winNegOne; % should be 1
+
+tic
+Game = gameCrossLine({[1],[1 1],[1 1],[1 1]},1);
+Game.generatePossibleNextStepAndCompWinStatus
+Game
+toc
+winPos = Game.winPosOne; % should be 1
+winNeg = Game.winNegOne; % should be 0
+
+tic
+Game = gameCrossLine({[1],[1],[1],[1 1],[1 1]},1);
+Game.generatePossibleNextStepAndCompWinStatus
+Game
+toc
+winPos = Game.winPosOne; % should be 1
+winNeg = Game.winNegOne; % should be 0
